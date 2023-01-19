@@ -1,0 +1,1 @@
+For JS maybe try JSON file with all reported incidents of a given area. Then inside the area jquery block, have it search for the title in the JSON with the selected name? 

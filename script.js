@@ -33,4 +33,17 @@ $(document).ready(function () {
     console.log($(this).attr("title"));
     $("#selectionDisplay").text($(this).attr("title"));
   });
+
+  //Nightmode functionality
+  let nightMode = false;
+  $(".night-mode").click(function () {
+    $(".image-map").toggleClass('nightMode');
+    if(nightMode === false) {
+      fillColor = "ff0033"
+      nightMode = true;
+    } else {
+      fillColor = "00FFCC"
+      nightMode = false;
+    }
+  });
 });

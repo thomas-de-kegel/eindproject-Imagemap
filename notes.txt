@@ -5,4 +5,5 @@ https://projects.davidlynch.org/maphilight/docs/#maphilight
 
 color scheme:
     selection: #00FFCC
+    selection inverted: #ff0033
     

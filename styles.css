@@ -1,5 +1,7 @@
-.image-map {
-    filter: none;
+
+
+.col-md-4{
+    background-color: aqua;
 }
 
 .image-map.nightMode {

@@ -1,7 +1,10 @@
+body{
+    overflow-x: hidden;
+    background-color: #FFFFFF;
+}
 
-
-.col-md-4{
-    background-color: aqua;
+.col-4{
+    background-color: #F4F4F4;
 }
 
 .image-map.nightMode {

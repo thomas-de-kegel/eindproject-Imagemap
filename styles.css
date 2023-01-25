@@ -1,13 +1,73 @@
-body{
-    overflow-x: hidden;
-    font-family: 'Alegreya Sans', sans-serif;
-    background-color: #FFFFFF;
+body {
+  overflow-x: hidden;
+  font-family: "Nunito", sans-serif;
+  background-color: #ffffff;
 }
 
-.col-4{
-    background-color: #F4F4F4;
+h6 {
+  font-weight: 500;
+}
+
+input {
+  font-weight: 500;
+}
+
+.sidebar {
+  background-color: #f4f4f4;
+}
+
+.sidebar-header {
+  background-color: #00ffcc;
+}
+
+.issue-item {
+  padding: 0.5rem;
+  transition: 0.15s;
+}
+
+.issue-item:hover {
+  background-color: #dedede;
+}
+
+.addIssueBtn {
+  background-color: #00ffcc;
+  margin-left: 0.25rem;
+  transition: 0.15s;
+}
+
+.addIssueBtn:hover {
+  background-color: rgb(150, 255, 234);
+}
+
+.edit {
+  background-color: #ffcc00;
+  margin-left: 0.5rem;
+  transition: 0.15s;
+}
+
+.edit:hover {
+  background-color: #ffec9f;
+}
+
+.delete {
+  background-color: #ff0033;
+  margin-left: 0.25rem;
+  transition: 0.15s;
+}
+
+.delete:hover {
+  background-color: #ff9db2;
 }
 
 .image-map.nightMode {
-    filter: invert(100%);
+  filter: invert(100%);
+}
+
+#new-issue-form {
+  padding-left: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+#selectionDisplay {
+  font-weight: 700;
 }

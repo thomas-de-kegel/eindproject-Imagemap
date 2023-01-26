@@ -14,49 +14,89 @@ input {
 
 .sidebar {
   background-color: #f4f4f4;
+  height: auto;
 }
 
-.sidebar-header {
+.listed-issues {
+  padding-left: 0.5rem;
+}
+
+.addIssueBtn {
   background-color: #00ffcc;
+  color: rgba(0, 0, 0, 0.7);
+  border: none;
+  margin-left: 0.25rem;
+  padding: 0.15rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  transition: 0.15s;
+}
+
+.addIssueBtn:hover {
+  background-color: rgb(127, 255, 229);
+}
+
+.issue-item:not(:first-child){
+  border-top: 2px solid #e2e3e3;
+}
+
+.issue-item:nth-child(even){
+  background-color: #ebebeb;
 }
 
 .issue-item {
   padding: 0.5rem;
   transition: 0.15s;
+  display: flex;
 }
 
 .issue-item:hover {
   background-color: #dedede;
 }
 
-.addIssueBtn {
-  background-color: #00ffcc;
-  margin-left: 0.25rem;
+.issue-description {
+  border: none;
+  padding: 0.15rem;
+  background-color: transparent;
   transition: 0.15s;
 }
 
-.addIssueBtn:hover {
-  background-color: rgb(150, 255, 234);
+.issue-description:focus {
+  background-color: white;
+}
+
+.actions {
+  margin: auto;
 }
 
 .edit {
-  background-color: #ffcc00;
+  background-color: #ffe100;
+  color: rgba(0, 0, 0, 0.7);
+  border: none;
   margin-left: 0.5rem;
+  padding: 0.15rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
   transition: 0.15s;
 }
 
 .edit:hover {
-  background-color: #ffec9f;
+  background-color: #ffed69;
 }
 
 .delete {
   background-color: #ff0033;
-  margin-left: 0.25rem;
+  color: rgba(0, 0, 0, 0.7);
+  border: none;
+  margin-left: 0.5rem;
+  padding: 0.15rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
   transition: 0.15s;
 }
 
 .delete:hover {
-  background-color: #ff9db2;
+  background-color: #ff6c8c;
 }
 
 .image-map.nightMode {
@@ -66,8 +106,10 @@ input {
 #new-issue-form {
   padding-left: 0.5rem;
   padding-bottom: 2rem;
+  border: none ;
 }
 
 #selectionDisplay {
   font-weight: 700;
+  padding-left: 0.5rem;
 }

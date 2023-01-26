@@ -34,7 +34,7 @@ $(document).ready(function () {
   //Area click functionality
   let issueLocation = localStorage.getItem("issue-location");
   $("#selectionDisplay").text(issueLocation);
-  
+
   $("area").click(function () {
     issueLocation = $(this).attr("title");
     $("#selectionDisplay").text(issueLocation);
@@ -56,7 +56,6 @@ $(document).ready(function () {
   });
 
   //New Issue functionality
-
   $("#new-issue-form").submit(function (e) {
     e.preventDefault();
     console.log("Issue created");
@@ -90,6 +89,9 @@ function displayIssues() {
   const issueList = document.querySelector(".issue-list");
 
   issueList.innerHTML = "";
+
+  // const filteredIssues =  issues.filter(location => location = issueLocation)
+  // console.log(filteredIssues);
 
   issues.forEach((issue) => {
     const issueItem = document.createElement("div");

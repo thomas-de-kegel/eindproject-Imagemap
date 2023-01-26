@@ -1,4 +1,4 @@
-For JS maybe try JSON file with all reported incidents of a given area. Then inside the area jquery block, have it search for the title in the JSON with the selected name? 
+For filter: put selected area into var that gets stored in localStorage and is called after every action
 
 //Maphilight docs:
 https://projects.davidlynch.org/maphilight/docs/#maphilight

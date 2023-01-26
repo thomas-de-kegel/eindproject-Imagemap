@@ -32,11 +32,14 @@ $(document).ready(function () {
   $(".image-map").maphilight();
 
   //Area click functionality
-  let issueLocation = "";
+  let issueLocation = localStorage.getItem("issue-location");
+  $("#selectionDisplay").text(issueLocation);
+  
   $("area").click(function () {
-    console.log($(this).attr("title"));
-    $("#selectionDisplay").text($(this).attr("title"));
     issueLocation = $(this).attr("title");
+    $("#selectionDisplay").text(issueLocation);
+    console.log(issueLocation);
+    localStorage.setItem("issue-location", issueLocation);
   });
 
   //Nightmode functionality

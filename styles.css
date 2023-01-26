@@ -54,20 +54,28 @@ input {
   background-color: #dedede;
 }
 
-.issue-description {
+input[type=text]{
   border: none;
   padding: 0.15rem;
   background-color: transparent;
   transition: 0.15s;
+  overflow-block: auto;
 }
 
-.issue-description:focus {
+input[type=text]:focus {
   background-color: white;
 }
 
-.content:focus{
-  background-color: #ff0033;
-  color: #ff0033;
+.issue-time{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 9pt;
+  margin-right: 0.5rem;
+  padding-right: 0.5rem;
+  border-right: #c1c1c1 2px solid;
 }
 
 .actions {

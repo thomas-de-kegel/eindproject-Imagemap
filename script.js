@@ -52,76 +52,89 @@ $(document).ready(function () {
     }
   });
 
-  
   //New Issue functionality
-  $("#new-issue-form").submit(function (e) { 
+
+  $("#new-issue-form").submit(function (e) {
     e.preventDefault();
     console.log("Issue created");
-    
+    function formattedTime(date) {
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      const seconds = String(date.getSeconds()).padStart(2, "0");
+      return time = [hours, minutes, seconds]
+    }
+    const newTime = new Date();
+
     const issue = {
       content: e.target.elements.content.value,
       location: issueLocation,
-      createdAt: new Date().getTime()
-    }
-    
+      createdAt: formattedTime(newTime).join(":"),
+    };
+
     issues.push(issue);
-    
+
     localStorage.setItem("issues", JSON.stringify(issues));
-    
+
     e.target.reset();
-    displayIssues()
+    displayIssues();
   });
-  
+
   displayIssues();
 });
 
 //Display Issues functionality
 function displayIssues() {
-  const issueList = document.querySelector('.issue-list');
+  const issueList = document.querySelector(".issue-list");
 
   issueList.innerHTML = "";
 
-  issues.forEach(issue => {
-    const issueItem = document.createElement('div');
-    issueItem.classList.add('issue-item');
+  issues.forEach((issue) => {
+    const issueItem = document.createElement("div");
+    issueItem.classList.add("issue-item");
 
-    const content = document.createElement('div');
-    const actions =  document.createElement('div');
-    const edit = document.createElement('button');
-    const deleteBtn = document.createElement('button');
+    const timeCreated = document.createElement("div");
+    const content = document.createElement("div");
+    const actions = document.createElement("div");
+    const edit = document.createElement("button");
+    const deleteBtn = document.createElement("button");
 
-    content.classList.add('issue-content');
-    actions.classList.add('actions');
-    edit.classList.add('edit');
-    deleteBtn.classList.add('delete');
+    timeCreated.classList.add("issue-time");
+    content.classList.add("issue-content");
+    actions.classList.add("actions");
+    edit.classList.add("edit");
+    deleteBtn.classList.add("delete");
 
+    timeCreated.innerHTML = `${issue.createdAt}`;
     content.innerHTML = `<input type="text" value="${issue.content}" readonly>`;
-    edit.innerHTML = 'edit';
-    deleteBtn.innerHTML = 'delete';
+    edit.innerHTML = "edit";
+    deleteBtn.innerHTML = "delete";
 
     actions.appendChild(edit);
     actions.appendChild(deleteBtn);
+    issueItem.appendChild(timeCreated);
     issueItem.appendChild(content);
     issueItem.appendChild(actions);
 
     issueList.appendChild(issueItem);
 
-    edit.addEventListener('click', e => {
-      const input = content.querySelector('input');
-      input.removeAttribute('readonly');
+    //Edit functionality
+    edit.addEventListener("click", (e) => {
+      const input = content.querySelector("input");
+      input.removeAttribute("readonly");
       input.focus();
-      input.addEventListener('blur', e => {
-        input.setAttribute('readonly', true);
+      input.addEventListener("blur", (e) => {
+        input.setAttribute("readonly", true);
         issue.content = e.target.value;
-        localStorage.setItem('issues', JSON.stringify(issues));
+        localStorage.setItem("issues", JSON.stringify(issues));
         displayIssues();
-      })
-    })
+      });
+    });
 
-    deleteBtn.addEventListener('click', e =>{
-      issues = issues.filter(i => i != issue);
-      localStorage.setItem('issues', JSON.stringify(issues));
+    //Delete functionality
+    deleteBtn.addEventListener("click", (e) => {
+      issues = issues.filter((i) => i != issue);
+      localStorage.setItem("issues", JSON.stringify(issues));
       displayIssues();
-    })
-  })
+    });
+  });
 }

@@ -105,5 +105,23 @@ function displayIssues() {
     issueItem.appendChild(actions);
 
     issueList.appendChild(issueItem);
+
+    edit.addEventListener('click', e => {
+      const input = content.querySelector('input');
+      input.removeAttribute('readonly');
+      input.focus();
+      input.addEventListener('blur', e => {
+        input.setAttribute('readonly', true);
+        issue.content = e.target.value;
+        localStorage.setItem('issues', JSON.stringify(issues));
+        displayIssues();
+      })
+    })
+
+    deleteBtn.addEventListener('click', e =>{
+      issues = issues.filter(i => i != issue);
+      localStorage.setItem('issues', JSON.stringify(issues));
+      displayIssues();
+    })
   })
 }

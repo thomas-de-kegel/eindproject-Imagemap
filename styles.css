@@ -65,6 +65,11 @@ input {
   background-color: white;
 }
 
+.content:focus{
+  background-color: #ff0033;
+  color: #ff0033;
+}
+
 .actions {
   margin: auto;
 }

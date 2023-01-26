@@ -21,14 +21,20 @@ input {
   padding-left: 0.5rem;
 }
 
+.enter-issue{
+  margin-left: 0.5rem;
+}
+
 .addIssueBtn {
   background-color: #00ffcc;
   color: rgba(0, 0, 0, 0.7);
+  font-size: 14pt;
+  font-weight: 1000;
   border: none;
   margin-left: 0.25rem;
   padding: 0.15rem;
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
   transition: 0.15s;
 }
 
@@ -83,6 +89,11 @@ input[type=text]:focus {
 
 .actions {
   margin: auto;
+  display: none;
+}
+
+.issue-item:hover .actions {
+  display: block;
 }
 
 .edit {
@@ -119,7 +130,12 @@ input[type=text]:focus {
   filter: invert(100%);
 }
 
+#content {
+  background-color: #ffffff;
+}
+
 #new-issue-form {
+  display: flex;
   padding-left: 0.5rem;
   padding-bottom: 2rem;
   border: none ;

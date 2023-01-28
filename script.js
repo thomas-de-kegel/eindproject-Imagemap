@@ -32,7 +32,7 @@ $(document).ready(function () {
   $(".image-map").maphilight();
 
   //Area click functionality
-  let issueLocation = localStorage.getItem("issue-location");
+  issueLocation = localStorage.getItem("issue-location");
   $("#selectionDisplay").text(issueLocation);
 
   $("area").click(function () {
@@ -40,6 +40,7 @@ $(document).ready(function () {
     $("#selectionDisplay").text(issueLocation);
     console.log(issueLocation);
     localStorage.setItem("issue-location", issueLocation);
+    displayIssues();
   });
 
   //Nightmode functionality
@@ -63,7 +64,7 @@ $(document).ready(function () {
       const hours = String(date.getHours()).padStart(2, "0");
       const minutes = String(date.getMinutes()).padStart(2, "0");
       const seconds = String(date.getSeconds()).padStart(2, "0");
-      return time = [hours, minutes, seconds]
+      return (time = [hours, minutes, seconds]);
     }
     const newTime = new Date();
 
@@ -90,56 +91,55 @@ function displayIssues() {
 
   issueList.innerHTML = "";
 
-  // const filteredIssues =  issues.filter(location => location = issueLocation)
-  // console.log(filteredIssues);
-
   issues.forEach((issue) => {
-    const issueItem = document.createElement("div");
-    issueItem.classList.add("issue-item");
+    if (issue.location === issueLocation) {
+      const issueItem = document.createElement("div");
+      issueItem.classList.add("issue-item");
 
-    const timeCreated = document.createElement("div");
-    const content = document.createElement("div");
-    const actions = document.createElement("div");
-    const edit = document.createElement("button");
-    const deleteBtn = document.createElement("button");
+      const timeCreated = document.createElement("div");
+      const content = document.createElement("div");
+      const actions = document.createElement("div");
+      const edit = document.createElement("button");
+      const deleteBtn = document.createElement("button");
 
-    timeCreated.classList.add("issue-time");
-    content.classList.add("issue-content");
-    actions.classList.add("actions");
-    edit.classList.add("edit");
-    deleteBtn.classList.add("delete");
+      timeCreated.classList.add("issue-time");
+      content.classList.add("issue-content");
+      actions.classList.add("actions");
+      edit.classList.add("edit");
+      deleteBtn.classList.add("delete");
 
-    timeCreated.innerHTML = `${issue.createdAt}`;
-    content.innerHTML = `<input type="text" value="${issue.content}" readonly>`;
-    edit.innerHTML = "edit";
-    deleteBtn.innerHTML = "delete";
+      timeCreated.innerHTML = `${issue.createdAt}`;
+      content.innerHTML = `<input type="text" value="${issue.content}" readonly>`;
+      edit.innerHTML = "edit";
+      deleteBtn.innerHTML = "delete";
 
-    actions.appendChild(edit);
-    actions.appendChild(deleteBtn);
-    issueItem.appendChild(timeCreated);
-    issueItem.appendChild(content);
-    issueItem.appendChild(actions);
+      actions.appendChild(edit);
+      actions.appendChild(deleteBtn);
+      issueItem.appendChild(timeCreated);
+      issueItem.appendChild(content);
+      issueItem.appendChild(actions);
 
-    issueList.appendChild(issueItem);
+      issueList.appendChild(issueItem);
 
-    //Edit functionality
-    edit.addEventListener("click", (e) => {
-      const input = content.querySelector("input");
-      input.removeAttribute("readonly");
-      input.focus();
-      input.addEventListener("blur", (e) => {
-        input.setAttribute("readonly", true);
-        issue.content = e.target.value;
+      //Edit functionality
+      edit.addEventListener("click", (e) => {
+        const input = content.querySelector("input");
+        input.removeAttribute("readonly");
+        input.focus();
+        input.addEventListener("blur", (e) => {
+          input.setAttribute("readonly", true);
+          issue.content = e.target.value;
+          localStorage.setItem("issues", JSON.stringify(issues));
+          displayIssues();
+        });
+      });
+
+      //Delete functionality
+      deleteBtn.addEventListener("click", (e) => {
+        issues = issues.filter((i) => i != issue);
         localStorage.setItem("issues", JSON.stringify(issues));
         displayIssues();
       });
-    });
-
-    //Delete functionality
-    deleteBtn.addEventListener("click", (e) => {
-      issues = issues.filter((i) => i != issue);
-      localStorage.setItem("issues", JSON.stringify(issues));
-      displayIssues();
-    });
+    }
   });
 }

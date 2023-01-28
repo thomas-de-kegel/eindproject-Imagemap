@@ -1,4 +1,8 @@
-For filter: put selected area into var that gets stored in localStorage and is called after every action
+Last additions:
+ *Try for mobile friendly css
+ *Try and phase out bootstrap parts
+ *Add info button to explain functionality
+ *Add a "Nothing selected" <p> when no location is selected.
 
 //Maphilight docs:
 https://projects.davidlynch.org/maphilight/docs/#maphilight

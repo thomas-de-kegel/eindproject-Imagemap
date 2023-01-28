@@ -2,6 +2,7 @@ body {
   overflow-x: hidden;
   font-family: "Nunito", sans-serif;
   background-color: #ffffff;
+  margin: 0px !important;
 }
 
 h6 {
@@ -14,7 +15,12 @@ input {
 
 .sidebar {
   background-color: #f4f4f4;
-  height: auto;
+  height:100vh;
+  height:100dvh;
+  position: fixed;
+  right: 0;
+  /* right: -15rem; */
+  z-index: 1;
 }
 
 .listed-issues {

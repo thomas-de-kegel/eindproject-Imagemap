@@ -32,8 +32,7 @@ $(document).ready(function () {
   $(".image-map").maphilight();
 
   //Area click functionality
-  issueLocation = localStorage.getItem("issue-location");
-  $("#selectionDisplay").text(issueLocation);
+  issueLocation = ""
 
   $("area").click(function () {
     issueLocation = $(this).attr("title");

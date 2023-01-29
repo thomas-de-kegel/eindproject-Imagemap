@@ -43,19 +43,6 @@ $(document).ready(function () {
     displayIssues();
   });
 
-  //Nightmode functionality
-  let nightMode = false;
-  $(".night-mode").click(function () {
-    $(".image-map").toggleClass("nightMode");
-    if (nightMode === false) {
-      fillColor = "ff0033";
-      nightMode = true;
-    } else {
-      fillColor = "00FFCC";
-      nightMode = false;
-    }
-  });
-
   //New Issue functionality
   $("#new-issue-form").submit(function (e) {
     e.preventDefault();
